@@ -5,9 +5,12 @@ Just a local gate to MetaMask sign from local code
 
 
 
+Pure JS:
+https://docs.metamask.io/wallet/how-to/use-sdk/javascript/pure-js/
 
 
-
+Documentation:
+- Plan https://docs.metamask.io/wallet/concepts/sdk/connections/ 
 
 What is Meta Mask ?
 - https://cryptoast.fr/tutoriel-metamask/
