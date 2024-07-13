@@ -14,9 +14,10 @@
     <button id="connectButton">Connect and sign message MetaMask</button>
 
 
-    <p id="messageDisplay"></p>
-    <p id="addressDisplay"></p>
-    <p id="signatureDisplay"></p>
+    <p id="messageDisplay">Message:</p>
+    <p id="addressDisplay">Address:</p>
+    <p id="signatureDisplay">Signed Message:</p>
+    <p id="signatureDate">Date: </p>
 
 
     <script>
@@ -51,7 +52,6 @@
                             })
                             .catch(error => {
                                 console.error('Error signing message:', error);
-                                alert('Error signing message: ' + error.message);
                             });
                     } else {
                         console.log('No message entered');
@@ -69,6 +69,7 @@
             document.getElementById('messageDisplay').innerText = 'Message: ' + message;
             document.getElementById('addressDisplay').innerText = 'Address: ' + accounts[0];
             document.getElementById('signatureDisplay').innerText = 'Signed Message: ' + signature;
+            document.getElementById('signatureDate').innerText = 'Date: ' + new Date().toLocaleString();
         });
     </script>
 </body>
