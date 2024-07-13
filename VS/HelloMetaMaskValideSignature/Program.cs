@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net.Sockets;
 using Nethereum.Signer;
 using Nethereum.Util;
 
@@ -12,6 +13,22 @@ class Program
         bool isValid = VerifySignedMessage(message, address, signedMessage);
         Console.WriteLine($"Is the signature valid? {isValid}");
 
+
+        Thread t = new Thread(new ThreadStart(VerifySignedMessageLoop));
+        t.Start();
+
+        Console.WriteLine("Press any key to exit...");
+        
+
+    }
+
+    private static void VerifySignedMessageLoop()
+    {
+        UdpClient udpClient = new UdpClient(11000);
+        while (true)
+        {
+            
+        }
     }
 
     public static bool VerifySignedMessage(string message, string address, string signedMessage)

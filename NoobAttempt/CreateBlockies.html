@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethereum Blockie Generator</title>
+</head>
+<body>
+    <h1>Ethereum Blockie Generator</h1>
+    <img id="blockie" alt="Ethereum Blockie">
+    
+    <script>
+        // Function to generate a blockie
+        function generateBlockie(address) {
+            // Generate a random hash based on the address
+            const hash = web3.utils.sha3(address);
+            
+            // Create a canvas element
+            const canvas = document.createElement('canvas');
+            const context = canvas.getContext('2d');
+            canvas.width = canvas.height = 8;
+            
+            // Draw the identicon
+            for (let i = 0; i < 8; i++) {
+                for (let j = 0; j < 8; j++) {
+                    // Each 4 bits determine a color
+                    const color = parseInt(hash.charAt(i * 8 + j), 16) % 2 ? '#000' : '#FFF';
+                    context.fillStyle = color;
+                    context.fillRect(i, j, 1, 1);
+                }
+            }
+            
+            // Convert the canvas to a data URL and set it as the image src
+            const imageData = canvas.toDataURL();
+            document.getElementById('blockie').src = imageData;
+        }
+        
+        // Example Ethereum address
+        const ethereumAddress = '0x1234567890abcdef1234567890abcdef12345678';
+        
+        // Generate blockie for the example address
+        generateBlockie(ethereumAddress);
+    </script>
+</body>
+</html>
