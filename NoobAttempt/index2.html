@@ -19,8 +19,8 @@
     <p id="addressDisplay">Address:</p>
     <p id="signatureDisplay">Signed Message:</p>
     <p id="signatureDate">Date: </p>
-    <p id="version">3</p>
-    <p id="copyPastable"></p>
+    <p id="version">4</p>
+    <input type="text" id="copyPastable" value="-">
 
 
     <script>
@@ -64,8 +64,8 @@
                                 document.getElementById('signatureDisplay').innerText = 'Signed Message: ' + signature;
                                 document.getElementById('signatureDate').innerText = 'Date: ' + new Date().toLocaleString();
                                 string_copy_past = message+"|"+accounts[0]+"|"+signature;
-                                navigator.clipboard.writeText(string_copy_past);
-                                document.getElementById('copyPastable').innerText =string_copy_past;        
+                                document.getElementById('copyPastable').value = string_copy_past;  
+                                navigator.clipboard.writeText(string_copy_past);     
                               })
                             .catch(error => {
                                 console.error('Error signing message:', error);
