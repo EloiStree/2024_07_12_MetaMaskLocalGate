@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MetaMask SDK Example</title>
+  <script src="https://c0f4f41c-2f55-4863-921b-sdk-docs.github.io/cdn/metamask-sdk.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      try {
+        const MMSDK = new MetaMaskSDK.MetaMaskSDK({
+          dappMetadata: {
+            name: "Example Pure JS Dapp",
+            url: window.location.href,
+          },
+          infuraAPIKey: "38554ef2897f451abe438517a45edb65",
+        });
+
+        // Delay to ensure MetaMask SDK initialization
+        setTimeout(() => {
+          try {
+            const ethereum = MMSDK.getProvider();
+            ethereum.request({ method: 'eth_requestAccounts' })
+              .then(accounts => {
+                console.log("Connected accounts:", accounts);
+                document.getElementById("status").textContent = "Connected to MetaMask: " + accounts.join(", ");
+
+                // Signing message "Hello Coucou"
+                const message = "Hello Coucou";
+                ethereum.request({
+                  method: 'personal_sign',
+                  params: [accounts[0], message]
+                })
+                .then(signature => {
+                  console.log("Signed message:", signature);
+                  document.getElementById("status").textContent += " | Signed message: " + signature;
+                })
+                .catch(error => {
+                  console.error("Error signing message:", error);
+                  document.getElementById("status").textContent += " | Error signing message: " + error.message;
+                });
+              })
+              .catch(error => {
+                console.error("Error requesting accounts:", error);
+                document.getElementById("status").textContent = "Error requesting accounts: " + error.message;
+              });
+          } catch (error) {
+            console.error("Error getting provider:", error);
+            document.getElementById("status").textContent = "Error getting provider: " + error.message;
+          }
+        }, 0);
+      } catch (error) {
+        console.error("Error initializing MetaMask SDK:", error);
+        document.getElementById("status").textContent = "Error initializing MetaMask SDK: " + error.message;
+      }
+    });
+  </script>
+</head>
+<body>
+  <h1>MetaMask SDK Example</h1>
+  <p id="status">Connecting to MetaMask...</p>
+</body>
+</html>
