@@ -24,3 +24,5 @@ Based challenged:
 
 
 That what I need but not in react https://codesandbox.io/s/react-eth-metamask-signatures-ibuxj?file=/public/index.html
+-  What I need https://youtu.be/6BNcpjOebb0
+
