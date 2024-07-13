@@ -8,6 +8,9 @@
 </head>
 <body>
     <h1>Connect to MetaMask and Sign a Message</h1>
+
+    <input type="text" id="messageInput" placeholder="Enter message to sign">
+
     <button id="connectButton">Connect MetaMask</button>
     <script>
         document.getElementById('connectButton').addEventListener('click', async function() {
@@ -31,11 +34,9 @@
                         console.log('MetaMask is connected. Account:', accounts[0]);
                     }
 
-                    // Prompt user for a message to sign
-                    const message = prompt("Enter the message you want to sign:");
-
+                    const message = document.getElementById('messageInput').value;
+                    console.log('Message to sign:', message);
                     if (message) {
-                        // Sign the message
                         web3.eth.personal.sign(web3.utils.utf8ToHex(message), accounts[0], '')
                             .then(signature => {
                                 console.log('Message signed:', signature);
