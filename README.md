@@ -115,3 +115,6 @@ else:
 - Web3Auth: https://web3auth.io
 - Privy: https://www.privy.io
 
+# Have token on test net.
+- https://faucets.chain.link/sepolia
+
