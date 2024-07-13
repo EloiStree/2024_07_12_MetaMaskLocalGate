@@ -11,7 +11,14 @@
 
     <input type="text" id="messageInput" placeholder="Enter message to sign">
 
-    <button id="connectButton">Connect MetaMask</button>
+    <button id="connectButton">Connect and sign message MetaMask</button>
+
+
+    <p id="messageDisplay"></p>
+    <p id="addressDisplay"></p>
+    <p id="signatureDisplay"></p>
+
+
     <script>
         document.getElementById('connectButton').addEventListener('click', async function() {
             'use strict';
@@ -57,6 +64,11 @@
                 console.log('MetaMask is not installed');
                 alert('MetaMask is not installed. Please install it to proceed.');
             }
+           
+
+            document.getElementById('messageDisplay').innerText = 'Message: ' + message;
+            document.getElementById('addressDisplay').innerText = 'Address: ' + accounts[0];
+            document.getElementById('signatureDisplay').innerText = 'Signed Message: ' + signature;
         });
     </script>
 </body>
