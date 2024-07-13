@@ -110,7 +110,8 @@ else:
 
 ---------------
 
-
-## Vercel 
-https://vercel.com/new
+# Alternative
+- Wallet Connect: https://walletconnect.com
+- Web3Auth: https://web3auth.io
+- Privy: https://www.privy.io
 
