@@ -110,7 +110,15 @@ else:
 
 ---------------
 
+# Alternative
+- Wallet Connect: https://walletconnect.com
+- Web3Auth: https://web3auth.io
+- Privy: https://www.privy.io
 
-## Vercel 
-https://vercel.com/new
+# Have token on test net.
+- https://faucets.chain.link/sepolia
 
+
+
+-------------
+https://remix.ethereum.org
