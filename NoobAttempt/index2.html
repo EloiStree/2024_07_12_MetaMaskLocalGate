@@ -49,8 +49,12 @@
                         web3.eth.personal.sign(web3.utils.utf8ToHex(message), accounts[0], '')
                             .then(signature => {
                                 console.log('Message signed:', signature);
-                                alert('Message signed successfully. Signature: ' + signature);
-                            })
+                                document.getElementById('messageDisplay').innerText = 'Message: ' + message;
+                                document.getElementById('addressDisplay').innerText = 'Address: ' + accounts[0];
+                                document.getElementById('signatureDisplay').innerText = 'Signed Message: ' + signature;
+                                document.getElementById('signatureDate').innerText = 'Date: ' + new Date().toLocaleString();
+                        
+                              })
                             .catch(error => {
                                 console.error('Error signing message:', error);
                             });
@@ -67,11 +71,7 @@
             }
            
 
-            document.getElementById('messageDisplay').innerText = 'Message: ' + message;
-            document.getElementById('addressDisplay').innerText = 'Address: ' + accounts[0];
-            document.getElementById('signatureDisplay').innerText = 'Signed Message: ' + signature;
-            document.getElementById('signatureDate').innerText = 'Date: ' + new Date().toLocaleString();
-        });
+             });
     </script>
 </body>
 </html>
