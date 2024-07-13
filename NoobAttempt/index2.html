@@ -19,10 +19,19 @@
     <p id="addressDisplay">Address:</p>
     <p id="signatureDisplay">Signed Message:</p>
     <p id="signatureDate">Date: </p>
-    <p id="version">2</p>
+    <p id="version">3</p>
     <p id="copyPastable"></p>
 
+
     <script>
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const messageUrl = urlParams.get('message');
+        if (messageUrl) {
+            document.getElementById('messageInput').value = messageUrl;
+        }
+
+
         document.getElementById('connectButton').addEventListener('click', async function() {
             'use strict';
 
