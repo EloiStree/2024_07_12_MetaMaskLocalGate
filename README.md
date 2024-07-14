@@ -114,7 +114,9 @@ else:
 - Wallet Connect: https://walletconnect.com
 - Web3Auth: https://web3auth.io
 - Privy: https://www.privy.io
+- https://thirdweb.com/login?next=/dashboard/connect/playground
 
+  
 # Have token on test net.
 - https://faucets.chain.link/sepolia
 
