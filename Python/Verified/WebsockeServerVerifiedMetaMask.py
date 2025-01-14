@@ -8,6 +8,7 @@ import asyncio
 import websockets
 import requests
 
+bool_use_print = False
 
 def get_public_ip():
     response = requests.get('https://api.ipify.org?format=json')
@@ -30,20 +31,23 @@ async def handler(websocket, path):
             try:
                 bool_is_given_text = isinstance(given_text, str)
                 if not bool_is_given_text:
-                    print(f"Received: {given_text} (not a string)")
+                    if(bool_use_print):
+                        print(f"Received: {given_text} (not a string)")
                     await websocket.send("Fail|Invalid input expecting text split by | ")
                     websocket.close()
                     continue
-                print(f"Received: {given_text}")
+                if(bool_use_print): 
+                    print(f"Received: {given_text}")
                 tokens = given_text.split('|')
                 bool_is_verified = False
 
                 if len(tokens) == 3:
                     message, address, signed_message = tokens
                     # Printing the variables to verify
-                    print("Message:", message)
-                    print("Address:", address)
-                    print("Signed Message:", signed_message)
+                    if(bool_use_print):
+                        print("Message:", message)
+                        print("Address:", address)
+                        print("Signed Message:", signed_message)
                     w3 = Web3(Web3.HTTPProvider(""))
                     mesage= encode_defunct(text=message)
                     address_recovered = w3.eth.account.recover_message(mesage,signature=HexBytes(signed_message))
@@ -60,8 +64,9 @@ async def handler(websocket, path):
                 elif len(tokens) == 2:
                     message, signed_message = tokens
                     # Printing the variables to verify
-                    print("Message:", message)
-                    print("Signed Message:", signed_message)
+                    if(bool_use_print):
+                        print("Message:", message)
+                        print("Signed Message:", signed_message)
                     w3 = Web3(Web3.HTTPProvider(""))
                     mesage= encode_defunct(text=message)
                     address_recovered = w3.eth.account.recover_message(mesage,signature=HexBytes(signed_message))
