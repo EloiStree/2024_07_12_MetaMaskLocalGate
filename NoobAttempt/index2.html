@@ -79,7 +79,11 @@
                                 document.getElementById('signatureDate').innerText = 'Date: ' + new Date().toLocaleString();
                                 var string_copy_past = message + "|" + accounts[0] + "|" + signature;
                                 document.getElementById('copyPastable').value = string_copy_past;
-                                navigator.clipboard.writeText(string_copy_past);
+                                navigator.clipboard.writeText(string_copy_past).then(() => {
+                                
+                                }).catch(err => {
+                                    alert('Clipboard disable, please copy the text below.');
+                                });
        
                                 const textToCopy = string_copy_past;
                                 const tempTextArea = document.createElement('textarea');
